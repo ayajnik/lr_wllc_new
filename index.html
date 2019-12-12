@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='static/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Price for the Sku</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="item_id" placeholder="Item ID" required="required" />
+        <input type="text" name="qty_invoiced" placeholder="Quantity Invoiced" required="required" />
+		<input type="text" name="qty_ordered" placeholder="Quantity Ordered" required="required" />
+		<input type="text" name="qty_refunded" placeholder="Quantity Refunded" required="required" />
+		<input type="text" name="qty_shipped" placeholder="Quantity Shipped" required="required" />
+		<input type="text" name="base_price" placeholder="Base Price" required="required" />
+		<input type="text" name="original_price" placeholder="Original Price" required="required" />
+		<input type="text" name="discount_amount" placeholder="Discount Price" required="required" />
+		<input type="text" name="base_tax_amount" placeholder="Base Tax Price" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
